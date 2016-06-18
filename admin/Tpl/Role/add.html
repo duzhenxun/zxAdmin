@@ -1,0 +1,108 @@
+<layout name='Layout/public' />
+<div class="col-sm-6 pull-right">
+    <button class="btn btn-sm btn-primary pull-right" onclick="javascript:window.location.href = '?m={$mod}'">
+        返回列表
+        <i class="icon-reply icon-only"></i>
+    </button>
+</div>
+{:W('PageHeader',array('name'=>$action_name))}
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <div class="widget-main">
+            <form action="" method="post" name="myform" class="form-horizontal">
+
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="rolename" value="{$data.rolename}" class="col-xs-10 col-sm-5">
+                        <span class="help-inline col-xs-12 col-sm-7">
+                            <span class="middle">*请输入角色名称</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 角色描述 </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="description"  value="{$data.description}"  class="col-xs-10 col-sm-5">
+                        <span class="help-inline col-xs-12 col-sm-7">
+                            <span class="middle">*请输入角色描述</span>
+                        </span>
+                    </div>
+                </div>
+
+               
+
+
+                <div class="form-group ">
+                   <label class="col-sm-3 control-label padding-right"> 权限选择 </label>
+                    <div class="col-sm-9">
+                        <div class="checkbox">
+                            <label>
+                                <input name="checkall" type="checkbox" class="ace" id="cl">
+                                <span class="lbl">全选/取消</span>
+                            </label>
+                        </div>
+                        <foreach  name="node_arr" item="v"> 
+                            <div class="checkbox ">
+                                <label >
+                                    <input name="nodeids[]" value="{$v.id}" type="checkbox"  <in name="v['id']" value="$data['nodes']"> checked </in>  class="ace" onclick="checknode(this)">
+                                    <span class="lbl red"> {$v.name}</span>
+                                </label>
+
+                                <notempty name="v._child">
+                                    <foreach  name="v._child" item="vv"> 
+                                        <label>
+                                            <input name="nodeids[]" value="{$vv.id}" type="checkbox" class="ace" <in name="vv['id']" value="$data['nodes']"> checked </in>>
+                                            <span class="lbl"> {$vv.name}</span>
+                                        </label>
+
+                                        <notempty name="vv._child">
+                                            <foreach  name="vv._child" item="vvv"> 
+                                                <label>
+                                                    <input name="nodeids[]" value="{$vvv.id}"  type="checkbox" class="ace" <in name="vvv['id']" value="$data['nodes']"> checked </in>>
+                                                    <span class="lbl"> {$vvv.name}</span>
+                                                </label>
+                                            </foreach>
+                                        </notempty>
+                                    </foreach>
+                                </notempty>
+                            </div>
+                        </foreach>
+
+                        
+                    </div>
+                </div>
+                
+                 <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 状态 </label>
+                    <div class="col-sm-9">
+                        <input type="radio" class="ace" name="status" value="1" <if condition="$data.status eq 1">checked</if> > <span class="lbl"> 启用 </span>
+                        <input type="radio" class="ace" name="status" value="0" <if condition="$data.status eq 0">checked</if> > <span class="lbl"> 禁用 </span>
+                    </div>
+                </div>
+                
+                
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-info" type="button" onclick="myform.submit()">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            提交
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            重置
+                        </button>
+                    </div>
+                </div>
+                <gt name="_GET.id" value="0"><input type='hidden' name='id' value="{$_GET.id}"></gt>
+                <input type='hidden' name='dosubmit' value='ok'>
+            </form>
+        </div>
+    </div>
+</div>

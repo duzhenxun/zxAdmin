@@ -1,0 +1,71 @@
+<layout name='Layout/public' />
+
+{:W('PageHeader',array('name'=>'控制台'))}
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+
+        <div class="alert alert-block alert-success">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="ace-icon fa fa-times"></i>
+            </button>
+            <i class="ace-icon fa fa-check green"></i>
+            欢迎进入zx后台管理系统， 当前版本号：{:C('version')} 
+        </div>
+
+        <div class="row">
+            <div class="space-6"></div>
+
+            <div class="col-sm-12 infobox-container">
+                <!-- #section:pages/dashboard.infobox -->
+                <div class="infobox infobox-blue">
+                    <div class="infobox-icon">
+                        <i class="ace-icon fa fa-male"></i>
+                    </div>
+                    <div class="infobox-data">
+                        <span class="infobox-data-number">{$count.user_all}</span>
+                        <div class="infobox-content">会员总数</div>
+                    </div>       
+                </div>
+
+                <div class="infobox infobox-blue">
+                    <div class="infobox-icon">
+                        <i class="ace-icon fa fa-male"></i>
+                    </div>
+                    <div class="infobox-data">
+                        <span class="infobox-data-number">{:getCount('user',"status=1 and wrlogin!=0 and add_time > ".$time['today'])}</span>
+                        <div class="infobox-content">今天新增</div>
+                    </div>       
+                </div>
+
+                <div class="infobox infobox-blue">
+                    <div class="infobox-icon">
+                        <i class="ace-icon fa fa-male"></i>
+                    </div>
+                    <div class="infobox-data">
+                        <span class="infobox-data-number">{$count.user_yesterday}</span>
+                        <div class="infobox-content">昨天新增</div>
+                    </div>       
+                </div>
+
+                <div class="infobox infobox-blue">
+                    <div class="infobox-icon">
+                        <i class="ace-icon fa fa-male"></i>
+                    </div>
+                    <div class="infobox-data">
+                        <span class="infobox-data-number">{$count.user_monday}</span>
+                        <div class="infobox-content">30天内新增</div>
+                    </div>       
+                </div>
+
+
+                <!-- /section:pages/dashboard.infobox -->
+
+            </div>
+
+
+        </div><!-- /.row -->
+        <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div><!-- /.row -->

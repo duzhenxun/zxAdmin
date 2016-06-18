@@ -1,0 +1,79 @@
+<layout name='Layout/public' />
+
+{:W('PageHeader',array('name'=>$action_name))}
+<div class="operate panel panel-default">
+    <form name="myform" action=""  method="GET" >
+        <div class="panel-body">
+            <div class="pull-left">
+                 <input type="hidden" name="m" value="{$mod}">
+                 <input type="hidden" name="a" value="{$act}">
+                管理员：<input type="text" name="name" value="{$Think.get.name}">
+               
+                <button type="button" class="btn btn-purple btn-sm" onclick="myform.submit();">
+                    Search
+                    <i class="icon-search icon-on-right bigger-110"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <div class="row">
+            <div class="col-xs-12">
+                <table id="sample-table-1" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>管理员</th>
+                            <th>真实姓名</th>
+                            <th>日志</th>
+                            <th>最后登陆IP</th>
+                            <th>操作时间</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    <foreach name="data" item="v">
+                        <tr>  
+                            <td>{$v.id}</td>
+                            <td>{$v.username}</td>
+                            <td>{$v.realname}</td>
+                            <td>{$v.querystring}</td>
+                            <td>{$v.ip}</td>
+                            <td>{$v.add_time|date='Y-m-d H:i:s',###}</td> 
+                        </tr>
+                    </foreach>
+
+
+                    </tbody>
+                </table>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="dataTables_info" id="sample-table-2_info">
+                            共:{:count($data)}条记录  
+                            <if condition="($Think.session.auth_id eq 1)"><span class="btn btn-sm" onclick="window.location.href='?m={$mod}&a=del_admin_log'">清空</span></if>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="dataTables_paginate paging_bootstrap">
+                            <ul class="pagination">
+                                {$page}
+                            </ul>
+                        </div>
+                        
+                    </div>
+                   
+                </div>  
+
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+
+
+        <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+

@@ -1,0 +1,111 @@
+
+<layout name='Layout/public' />
+{:W('PageHeader',array('name'=>$action_name))}
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <form action="" method="post" name="myform" class="form-horizontal">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <div class="widget-box">
+                    <div class="widget-header">
+                        <h4 class="widget-title">金币奖励说明</h4>
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <textarea class="form-control" name="system[coins_log]" rows="15"><foreach name="data.coins_log" item="v">{$key}|{$v}&#13;&#10;</foreach></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.span -->
+             <div class="col-xs-12 col-sm-4">
+                <div class="widget-box">
+                    <div class="widget-header">
+                        <h4 class="widget-title">运动类型</h4>
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <textarea class="form-control" name="system[sports_type_task]" rows="15"><foreach name="data.sports_type_task" item="v">{$key}|{$v}&#13;&#10;</foreach></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.span -->
+            
+             <div class="col-xs-12 col-sm-4">
+                <div class="widget-box">
+                    <div class="widget-header">
+                        <h4 class="widget-title">监测设备</h4>
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <textarea class="form-control" name="system[monitoring_equipment]" rows="15"><foreach name="data.monitoring_equipment" item="v">{$key}|{$v}&#13;&#10;</foreach></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.span -->
+            
+             <div class="col-xs-12 col-sm-12">
+                <div class="widget-box">
+                    <div class="widget-header">
+                        <h4 class="widget-title">PATH 设置</h4>
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <textarea class="form-control" name="system[path]" rows="5"><foreach name="data.path" item="v">{$key}|{$v}&#13;&#10;</foreach></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.span -->
+            
+            
+            
+          
+        </div>
+
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button" onclick="myform.submit()">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    提交
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset">
+                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                    重置
+                </button>
+            </div>
+            <input type='hidden' name='dosubmit' value='ok'>
+        </div>
+        
+
+
+
+</form>
+
+
+    </div>
+</div>
+
+

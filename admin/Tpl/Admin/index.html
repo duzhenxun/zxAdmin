@@ -1,0 +1,109 @@
+<layout name='Layout/public' />
+<div class="col-sm-6 pull-right">
+    <button class="btn btn-sm btn-primary pull-right" onclick="javascript:window.location.href = '?m={$mod}&a=add'">
+        新增
+        <i class="icon-reply icon-only"></i>
+    </button>
+</div>
+{:W('PageHeader',array('name'=>$action_name))}
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <div class="row">
+            <div class="col-xs-12">
+                <table id="sample-table-1" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>用户名</th>
+                            <th>真实姓名</th>
+                            <th>所属角色</th>
+                            <th>最后登陆IP</th>
+                            <th>最后登陆时间</th>
+                            <th  class="hidden-480">添加时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    <foreach name="data" item="v">
+                        <tr>  
+                            <td>{$v.id}</td>
+                            <td>{$v.username}</td>
+                            <td>{$v.realname}</td>
+                            <td>{$v.rolename}</td>
+                            <td>{$v.ip}</td>
+                            <td>{$v.last_time|date='Y-m-d H:i:s',###}</td>
+                            <td  class="hidden-480">{$v.add_time|date='Y-m-d H:i:s',###}</td>
+                            <td>
+                                <div class="hidden-sm hidden-xs btn-group">
+                                    <button class="btn btn-xs btn-info" onclick="window.location.href = '?m={$mod}&a=add&id={$v.id}'">
+                                        <i class="ace-icon fa fa-pencil bigger-120" ></i>
+                                    </button>
+
+                                    <button class="btn btn-xs btn-danger" <if condition="($v.id neq 1)"> onclick="alert_del('?m={$mod}&a=del&id={$v.id}','确认要删除『{$v.username}』吗？')"  </if>>
+                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                    </button>
+
+                                </div>
+
+                                <div class="hidden-md hidden-lg">
+                                    <div class="inline position-relative">
+                                        <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                            <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                        </button>
+
+                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                            <li>
+                                                <a href="?m={$mod}&a=add&id={$v.id}" class="tooltip-info" data-rel="tooltip" title="View">
+                                                    <span class="blue">
+                                                        <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <if condition="($v.id neq 1)">  
+                                                <li>
+                                                    <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete" onclick="return alert_del('?m={$mod}&a=del&id={$v.id}', '确认要删除『{$v.username}』吗？');">
+                                                        <span class="red">
+                                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </if>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </foreach>
+
+
+                    </tbody>
+                </table>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="dataTables_info" id="sample-table-2_info">
+                            共:{:count($data)}条记录
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="dataTables_paginate paging_bootstrap">
+                            <ul class="pagination">
+                                {$page}
+                            </ul>
+                        </div>
+                    </div>
+                </div>  
+
+            </div><!-- /.span -->
+        </div><!-- /.row -->
+
+
+
+
+        <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+

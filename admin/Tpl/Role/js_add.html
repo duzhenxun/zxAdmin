@@ -1,0 +1,20 @@
+ <script>
+    function checknode(obj) {
+        $(obj).parent().siblings().find("input").prop('checked',$(obj).is(":checked"));
+        /**
+         $s =  $(obj).parent().siblings().find("input");
+        if (obj.checked) { 
+            $s.prop('checked',true);
+        } else {
+            $s.prop('checked',false);
+        }
+        **/
+   }
+   //全选、取消
+   $(function(){
+      $("#cl").bind("click",function(){
+          $(":checkbox").prop('checked',$(this).is(":checked"));
+      }); 
+   });
+
+ </script>

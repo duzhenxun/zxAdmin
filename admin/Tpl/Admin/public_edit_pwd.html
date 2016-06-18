@@ -1,0 +1,68 @@
+<layout name='Layout/public' />
+
+{:W('PageHeader',array('name'=>$action_name))}
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <div class="widget-main">
+            <form action="" method="post" name="myform" class="form-horizontal">
+                
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 账号 </label>
+                    <div class="col-sm-9">
+                        <input type="text" name="username" readonly value="{$data.username}" class="col-xs-10 col-sm-5">
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 旧密码 </label>
+                    <div class="col-sm-9">
+                         <input type="password" name="oldpassword"  value=""  class="col-xs-10 col-sm-5">
+                    </div>
+                </div>
+                
+                 <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 新密码 </label>
+                    <div class="col-sm-9">
+                         <input type="password" name="password"  value=""  class="col-xs-10 col-sm-5">
+                    </div>
+                </div>
+                
+                 <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 确认新密码 </label>
+                    <div class="col-sm-9">
+                         <input type="password" name="repassword"  value=""  class="col-xs-10 col-sm-5">
+                    </div>
+                </div>
+                
+             
+                
+                <if condition="$_GET.id gt 0">  
+                <input type='hidden' name='id' value="{$_GET.id}">
+                </if>
+               
+
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-info" type="button" onclick="myform.submit()">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            提交
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            重置
+                        </button>
+                    </div>
+                </div>
+                
+                <input type='hidden' name='dosubmit' value='ok'>
+            </form>
+        </div>
+    </div>
+</div>
+
+
